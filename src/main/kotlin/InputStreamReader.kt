@@ -1,3 +1,6 @@
+import com.sun.rowset.internal.Row
+import org.apache.poi.ss.usermodel.Workbook
+import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import java.io.*
 import java.io.InputStreamReader
 
@@ -28,13 +31,8 @@ fun main() {
         val br2 = BufferedReader(InputStreamReader(FileInputStream("C:\\aa\\Hello.java")))
         println("br2 >>> ${br2.readLine()}")
 
-
         val br3 = BufferedReader(InputStreamReader(FileInputStream("C:\\aa\\test.xlsx")))
         println("br3 >>> ${br3.readLine()}")
-        FileInputStream("C:\\aa\\test.xlsx").use {
-            fis ->
-            //val wb = ReadableW
-        }
 
         // 자원해제
         fr.close()
@@ -59,4 +57,11 @@ fun createFolderInWindows() {
             newFolder.mkdirs()
         }
     }
+}
+
+fun readFromExcelFile(filePath: String) {
+    val inputStream = FileInputStream(filePath)
+    val work: Workbook
+    val xlWb = XSSFWorkbook()
+    XSSFWorkbook()
 }

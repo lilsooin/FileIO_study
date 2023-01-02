@@ -15,6 +15,9 @@ dependencies {
     testImplementation(kotlin("test-junit5"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
+    implementation("org.apache.poi:poi-ooxml:5.2.2")
+    implementation("org.apache.poi:poi:5.2.2")
+
 }
 
 tasks.test {
