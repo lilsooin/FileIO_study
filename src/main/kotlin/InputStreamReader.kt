@@ -1,5 +1,5 @@
-import com.sun.rowset.internal.Row
 import org.apache.poi.ss.usermodel.Workbook
+import org.apache.poi.ss.usermodel.WorkbookFactory
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import java.io.*
 import java.io.InputStreamReader
@@ -34,6 +34,8 @@ fun main() {
         val br3 = BufferedReader(InputStreamReader(FileInputStream("C:\\aa\\test.xlsx")))
         println("br3 >>> ${br3.readLine()}")
 
+        readFromExcelFile("C:\\aa\\test.xlsx")
+
         // 자원해제
         fr.close()
         br1.close()
@@ -61,7 +63,14 @@ fun createFolderInWindows() {
 
 fun readFromExcelFile(filePath: String) {
     val inputStream = FileInputStream(filePath)
-    val work: Workbook
-    val xlWb = XSSFWorkbook()
-    XSSFWorkbook()
+    //Instantiate Excel workbook using existing file:
+    var xlWb = WorkbookFactory.create(inputStream)
+    //Row index specifies the row in the worksheet (starting at 0):
+    val rowNumber = 0
+    //Cell index specifies the column within the chosen row (starting at 0):
+    val columnNumber = 0
+
+    //Get reference to first sheet:
+    val xlWs = xlWb.getSheetAt(0)
+    println(xlWs.getRow(rowNumber).getCell(columnNumber))
 }
