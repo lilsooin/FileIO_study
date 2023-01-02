@@ -1,4 +1,5 @@
 import java.io.*
+import java.io.InputStreamReader
 
 fun main() {
     val osType = System.getProperty("os.name")
@@ -15,18 +16,27 @@ fun main() {
         // reader로 읽는 다양한 방법들
         // InputStream: Byte단위로 처리
         // InputStreamReader: 문자(char)로 처리
-         val fr = FileReader("C:\\aa\\Hello.java")
+        val fr = FileReader("C:\\aa\\Hello.java")
         println("fr >>> ${fr.readText()}")
 
         val br1 = BufferedReader(FileReader("C:\\aa\\Hello.java"))
-        println("br1 >>> ${br1.read()}")
+        println("br1 >>> ${br1.readLine()}")
 
         val ir = InputStreamReader(FileInputStream("C:\\aa\\Hello.java"))
         println("ir >>> ${ir.readText()}")
 
         val br2 = BufferedReader(InputStreamReader(FileInputStream("C:\\aa\\Hello.java")))
-        println("br >>> ${br2.readLine()}")
+        println("br2 >>> ${br2.readLine()}")
 
+
+        val br3 = BufferedReader(InputStreamReader(FileInputStream("C:\\aa\\test.xlsx")))
+        println("br3 >>> ${br3.readLine()}")
+        FileInputStream("C:\\aa\\test.xlsx").use {
+            fis ->
+            //val wb = ReadableW
+        }
+
+        // 자원해제
         fr.close()
         br1.close()
         ir.close()
@@ -40,7 +50,7 @@ fun main() {
 
 // Windows folder 생성
 fun createFolderInWindows() {
-    if (System.getProperty("os.name") == "Windows") {
+    if (System.getProperty("os.name").contains("Windows")) {
         val folderPath = File("C:\\aa")
         println(folderPath.exists())
         val newFolderPath = folderPath.absolutePath + File.separator + "newFolder"
